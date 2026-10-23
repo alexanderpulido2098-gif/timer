@@ -72,10 +72,26 @@ btnPlay.addEventListener("click", function () {
 btnStop.addEventListener("click", function () {
 	console.log("Premuto Stop!");
 
-	btnStop.disabled = true
+	if (btnStop.disabled = true) {
+		btnPlay.disabled = false
+		btnReset.disabled = false
+	}
+
+	if (tempoAttuale !== null) {
+		clearInterval(tempoAttuale)
+	}
+
+
+
 
 });
 
 btnReset.addEventListener("click", function () {
 	console.log("Premuto Reset!");
+
+	if (tempoAttuale !== null) {
+
+	}
+
+
 });
