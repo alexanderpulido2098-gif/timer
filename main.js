@@ -48,7 +48,11 @@ const btnReset = document.getElementById("reset-btn");
 //Gestisco gli eventi
 btnPlay.addEventListener("click", function () {
 
-	btnPlay.disabled = true
+	if (btnPlay.disabled = true) {
+		btnStop.disabled = false
+	}
+
+
 
 	tempoAttuale = setInterval(function () {
 
@@ -68,6 +72,7 @@ btnPlay.addEventListener("click", function () {
 btnStop.addEventListener("click", function () {
 	console.log("Premuto Stop!");
 
+	btnStop.disabled = true
 
 });
 
