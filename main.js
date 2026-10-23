@@ -36,7 +36,7 @@ const timer = setInterval(function () {
 // Lo <span> della pagina in cui scrivere il tempo
 let tempoAttuale = document.getElementById("cronometro");
 let tempoTrascorso = 0;
-
+let time = null
 
 // I tre bottoni del cronometro
 const btnPlay = document.getElementById("play-btn");
@@ -48,13 +48,13 @@ const btnReset = document.getElementById("reset-btn");
 //Gestisco gli eventi
 btnPlay.addEventListener("click", function () {
 
-	if (btnPlay.disabled = true) {
-		btnStop.disabled = false
-	}
+	btnPlay.disabled = true
+	btnStop.disabled = false
 
 
 
-	tempoAttuale = setInterval(function () {
+
+	time = setInterval(function () {
 
 		document.getElementById("cronometro").innerText = tempoTrascorso;
 		tempoTrascorso++;
@@ -72,13 +72,13 @@ btnPlay.addEventListener("click", function () {
 btnStop.addEventListener("click", function () {
 	console.log("Premuto Stop!");
 
-	if (btnStop.disabled = true) {
-		btnPlay.disabled = false
-		btnReset.disabled = false
-	}
+	btnStop.disabled = true
+	btnPlay.disabled = false
+	btnReset.disabled = false
 
-	if (tempoAttuale !== null) {
-		clearInterval(tempoAttuale)
+
+	if (time !== null) {
+		clearInterval(time)
 	}
 
 
@@ -89,9 +89,20 @@ btnStop.addEventListener("click", function () {
 btnReset.addEventListener("click", function () {
 	console.log("Premuto Reset!");
 
-	if (tempoAttuale !== null) {
+	if (time !== null) {
+		clearInterval(time)
+		time = null;
 
 	}
 
+	tempoTrascorso = 0;
 
-});
+
+	if (tempoAttuale) {
+		tempoAttuale.innerText = 0;
+	}
+
+
+	btnPlay.disabled = false;
+	btnStop.disabled = true;
+}); 
